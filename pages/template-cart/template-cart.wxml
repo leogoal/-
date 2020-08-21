@@ -2,7 +2,7 @@
     <view class="title-box">
         购物车空空如也～
     </view>
-    <button class="weui-btn" type="warn" bindtap="toIndexPage" style='margin:40rpx;'>去选购美食</button>
+    <button class="weui-btn" type="warn" bindtap="toIndexPage" style='margin:40rpx;'>去选购吧</button>
 </template>
 
 <template name="cart-goods-list">
