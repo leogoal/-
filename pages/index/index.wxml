@@ -14,7 +14,8 @@
         </block>
       </view>
     </view>
-    <block wx:for="{{shopSubList}}">
+    <view wx:if="{{shopSubList.length > 0}}">  
+      <block wx:for="{{shopSubList}}">
       <view class="weui-cells__title">{{item.name}}</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-id="{{item.id}}" bindtap='goMap'>
@@ -47,6 +48,7 @@
         </navigator> -->
       </view>
     </block>
+    </view>
     <view class='recommend-title'>店家推荐</view>
     <view class="goods-container" wx:if="{{goodsRecommend.length > 0}}">
       <view class="goods-box" wx:for-items="{{goodsRecommend}}" wx:key="*this" bindtap="toDetailsTap" data-id="{{item.id}}">
