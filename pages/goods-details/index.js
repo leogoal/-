@@ -15,14 +15,13 @@ Page({
     propertyChildIds: "",
     propertyChildNames: "",
     canSubmit: false, //  选中规格尺寸时候是否允许加入购物车
-    shopCarInfo: {},
-    currentPages: undefined
+    shopCarInfo: {}
   },
+
   async onLoad(e) {
-    console.log(e)
+
     this.data.goodsId = e.id
     const that = this
-    this.data.kjJoinUid = e.kjJoinUid
     // 获取购物车数据
     wx.getStorage({
       key: 'shopCarInfo',
@@ -35,9 +34,11 @@ Page({
       }
     })
   },
+
   onShow (){
     this.getGoodsDetailInfo(this.data.goodsId)
   },
+
   async getGoodsDetailInfo(goodsId) {
     const that = this;
     const goodsDetailRes = await WXAPI.goodsDetail(goodsId)
@@ -47,19 +48,20 @@ Page({
         goodsDetail: goodsDetailRes.data,
         selectSizePrice: goodsDetailRes.data.basicInfo.minPrice,
         buyNumMax: goodsDetailRes.data.basicInfo.stores,
-        buyNumber: (goodsDetailRes.data.basicInfo.stores > 0) ? 1 : 0,
-        currentPages: getCurrentPages()
+        buyNumber: (goodsDetailRes.data.basicInfo.stores > 0) ? 1 : 0
       }
  
       that.setData(_data);
       // WxParse.wxParse('article', 'html', goodsDetailRes.data.content, that, 5);
     }
   },
+
   goShopCar: function() {
     wx.reLaunch({
       url: "/pages/shop-cart/index"
     });
   },
+
   numJianTap: function() {
     if (this.data.buyNumber > this.data.buyNumMin) {
       var currentNum = this.data.buyNumber;
@@ -69,6 +71,7 @@ Page({
       })
     }
   },
+  
   numJiaTap: function() {
     if (this.data.buyNumber < this.data.buyNumMax) {
       var currentNum = this.data.buyNumber;
@@ -216,26 +219,5 @@ Page({
     shopCarInfo.kjId = this.data.kjId;
     return shopCarInfo;
   },
-  onShareAppMessage: function() {
-    let _data = {
-      title: this.data.goodsDetail.basicInfo.name,
-      path: '/pages/goods-details/index?id=' + this.data.goodsDetail.basicInfo.id + '&inviter_id=' + wx.getStorageSync('uid'),
-      success: function(res) {
-        // 转发成功
-      },
-      fail: function(res) {
-        // 转发失败
-      }
-    }
-    if (this.data.kjJoinUid) {
-      _data.title = this.data.curKanjiaprogress.joiner.nick + '邀请您帮TA砍价'
-      _data.path += '&kjJoinUid=' + this.data.kjJoinUid
-    }
-    return _data
-  },
-  goIndex() {
-    wx.switchTab({
-      url: '/pages/index/index',
-    });
-  }
+
 })
