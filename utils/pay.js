@@ -1,10 +1,9 @@
 const WXAPI = require('../wxapi/main')
 
 /**
- * type: order 支付订单 recharge 充值 paybill 优惠买单
- * data: 扩展数据对象，用于保存参数
+ * type: order 支付订单 
  */
-function wxpay(type, money, orderId, redirectUrl, data) {
+function wxpay(type, money, orderId, redirectUrl) {
   let remark = "在线充值";
   let nextAction = {};
   if (type === 'order') {
@@ -14,14 +13,7 @@ function wxpay(type, money, orderId, redirectUrl, data) {
       id: orderId
     };
   }
-  if (type === 'paybill') {
-    remark = "优惠买单 ：" + data.money;
-    nextAction = {
-      type: 4,
-      uid: wx.getStorageSync('uid'),
-      money: data.money
-    };
-  }
+
   WXAPI.wxpay({
     token: wx.getStorageSync('token'),
     money: money,
@@ -53,9 +45,12 @@ function wxpay(type, money, orderId, redirectUrl, data) {
           wx.showToast({
             title: '支付成功'
           })
-          wx.redirectTo({
-            url: redirectUrl
-          });
+
+          if (redirectUrl) {
+            wx.redirectTo({
+              url: redirectUrl
+            });
+          }
         }
       })
     } else {

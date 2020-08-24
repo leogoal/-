@@ -1,9 +1,5 @@
 <view class="page">
   <view class="page__bd">
-    <view class='asset'>
-      <view class='balance-name'>可用余额</view>
-      <view class='balance-value'>{{balance}}</view>
-    </view>
     <view style='height: 10rpx;'></view>
     <view class="weui-form-preview" wx:for="{{orderList}}" wx:key="*this">
       <view class="weui-form-preview__hd">
