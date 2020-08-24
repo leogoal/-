@@ -36,38 +36,13 @@ Page({
     })
   },
   onShow (){
-    // wx.setClipboardData({
-    //   data: 'data',
-    //   success(res) {
-    //     wx.getClipboardData({
-    //       success(res) {
-    //         console.log(res.data) // data
-    //       }
-    //     })
-    //   }
-    // })
-    // wx.getClipboardData({
-    //   success(res) {
-    //     console.log(res.data)
-    //   }
-    // })
-    this.getGoodsDetailAndKanjieInfo(this.data.goodsId)
+    this.getGoodsDetailInfo(this.data.goodsId)
   },
-  async getGoodsDetailAndKanjieInfo(goodsId) {
+  async getGoodsDetailInfo(goodsId) {
     const that = this;
     const goodsDetailRes = await WXAPI.goodsDetail(goodsId)
-    const goodsKanjiaSetRes = await WXAPI.kanjiaSet(goodsId)
 
     if (goodsDetailRes.code == 0) {
-      if (goodsDetailRes.data.properties) {
-        that.setData({
-          selectSizePrice: goodsDetailRes.data.basicInfo.minPrice,
-        });
-      }
-      if (goodsDetailRes.data.basicInfo.pingtuan) {
-        that.pingtuanList(goodsId)
-      }
-      that.data.goodsDetail = goodsDetailRes.data;
       let _data = {
         goodsDetail: goodsDetailRes.data,
         selectSizePrice: goodsDetailRes.data.basicInfo.minPrice,
@@ -75,30 +50,9 @@ Page({
         buyNumber: (goodsDetailRes.data.basicInfo.stores > 0) ? 1 : 0,
         currentPages: getCurrentPages()
       }
-      if (goodsKanjiaSetRes.code == 0) {
-        _data.curGoodsKanjia = goodsKanjiaSetRes.data
-        that.data.kjId = goodsKanjiaSetRes.data.id
-        // 获取当前砍价进度
-        if (!that.data.kjJoinUid) {
-          that.data.kjJoinUid = wx.getStorageSync('uid')
-        }
-        const curKanjiaprogress = await WXAPI.kanjiaDetail(goodsKanjiaSetRes.data.id, that.data.kjJoinUid)
-        const myHelpDetail = await WXAPI.kanjiaHelpDetail(goodsKanjiaSetRes.data.id, that.data.kjJoinUid, wx.getStorageSync('token'))
-        if (curKanjiaprogress.code == 0) {
-          _data.curKanjiaprogress = curKanjiaprogress.data
-        }
-        if (myHelpDetail.code == 0) {
-          _data.myHelpDetail = myHelpDetail.data
-        }
-      }
-      if (goodsDetailRes.data.basicInfo.pingtuan) {
-        const pingtuanSetRes = await WXAPI.pingtuanSet(goodsId)
-        if (pingtuanSetRes.code == 0) {
-          _data.pingtuanSet = pingtuanSetRes.data
-        }        
-      }
+ 
       that.setData(_data);
-      WxParse.wxParse('article', 'html', goodsDetailRes.data.content, that, 5);
+      // WxParse.wxParse('article', 'html', goodsDetailRes.data.content, that, 5);
     }
   },
   goShopCar: function() {
