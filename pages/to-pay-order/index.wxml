@@ -13,7 +13,7 @@
         </view>
         <view class="goods-list">
           <view class="list-title">商品列表</view>
-          <view class="a-goods" wx:for-items="{{goodsList}}" wx:key="{{index}}">
+          <view class="a-goods" wx:for-items="{{goodsList}}" wx:key="index">
             <view class="img-box">
               <image src="{{item.pic}}" class="img" />
             </view>

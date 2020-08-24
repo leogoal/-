@@ -20,18 +20,18 @@
 				</view>
 			</view>
 			<view wx:if="{{weeksCh}}" class="weeks box box-lr box-pack-center box-align-center">
-				<view class="flex week fs28" wx:for="{{weeksCh}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+				<view class="flex week fs28" wx:for="{{weeksCh}}" wx:key="index" data-idx="{{index}}">{{item}}</view>
 			</view>
 			<view class="days box box-lr box-wrap" bindtouchstart="datepickerTouchstart" bindtouchmove="datepickerTouchmove">
 				<view wx:if="{{empytGrids}}" class="grid disable-day-color  box box-align-center box-pack-center"
           wx:for="{{empytGrids}}"
-          wx:key="{{index}}"
+          wx:key="index"
           data-idx="{{index}}">
             <view class="day box box-align-center box-pack-center">{{item}}</view>
         </view>
 				<view class="grid normal-day-color box box-align-center box-pack-center"
           wx:for="{{days}}"
-          wx:key="{{index}}"
+          wx:key="index"
           data-idx="{{index}}"
           data-disable="{{item.disable}}"
           catchtap="tapDayItem">
@@ -39,7 +39,7 @@
 				</view>
 				<view class="grid disable-day-color  box box-align-center box-pack-center"
           wx:for="{{lastEmptyGrids}}"
-          wx:key="{{index}}"
+          wx:key="index"
           data-idx="{{index}}">
             <view class="day box box-align-center box-pack-center">{{item}}</view>
         </view>

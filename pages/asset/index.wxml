@@ -37,7 +37,7 @@
   </form>
 </view>
 <view class='no-data' wx:if="{{!cashlogs}}">暂无资金明细~</view>
-<view class='cashlogs' wx:if="{{cashlogs}}" wx:for-items="{{cashlogs}}" wx:key="{{index}}">
+<view class='cashlogs' wx:if="{{cashlogs}}" wx:for-items="{{cashlogs}}" wx:key="index">
   <view class='profile'>
     <view class='typeStr'>{{ item.typeStr }}</view>
     <view class='dateAdd'>{{ item.dateAdd }}</view>

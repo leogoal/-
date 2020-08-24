@@ -12,7 +12,7 @@
         <view class="edit-btn" hidden="{{saveHidden}}" bindtap="saveTap">完成</view>
     </view>
     <view class="goodsList">
-        <view class="a-gooods" wx:for="{{list}}"  wx:key="{{index}}" >
+        <view class="a-gooods" wx:for="{{list}}"  wx:key="index" >
             <view class="a-goods-conts {{item.active? 'active':''}}" bindtap="selectTap" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}"    style="{{item.left}}">
                 <view class="goods-info">
                     <view class="img-box">
