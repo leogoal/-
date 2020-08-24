@@ -8,11 +8,7 @@
     "pages/to-pay-order/index",
     "pages/wuliu/index",
     "pages/my/index",
-   
-    "pages/authorize/index",
-   
-   
-    "pages/sign/index"
+    "pages/authorize/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
