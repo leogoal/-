@@ -2,14 +2,14 @@
   <view class="page__bd">
     <view class="swiper-container">
       <swiper class="swiper_box" autoplay="true" bindchange="swiperchange">
-        <block wx:for="{{bannerList}}" wx:key="*this">
+        <block wx:for="{{bannerList}}" wx:key="id">
           <swiper-item>
             <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}" />
           </swiper-item>
         </block>
       </swiper>
       <view class="dots">
-        <block wx:for="{{bannerList}}" wx:key="*this">
+        <block wx:for="{{bannerList}}" wx:key="id">
           <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
         </block>
       </view>
