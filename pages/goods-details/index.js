@@ -36,27 +36,28 @@ Page({
     })
   },
   onShow (){
-    wx.setClipboardData({
-      data: 'data',
-      success(res) {
-        wx.getClipboardData({
-          success(res) {
-            console.log(res.data) // data
-          }
-        })
-      }
-    })
-    wx.getClipboardData({
-      success(res) {
-        console.log(res.data)
-      }
-    })
+    // wx.setClipboardData({
+    //   data: 'data',
+    //   success(res) {
+    //     wx.getClipboardData({
+    //       success(res) {
+    //         console.log(res.data) // data
+    //       }
+    //     })
+    //   }
+    // })
+    // wx.getClipboardData({
+    //   success(res) {
+    //     console.log(res.data)
+    //   }
+    // })
     this.getGoodsDetailAndKanjieInfo(this.data.goodsId)
   },
   async getGoodsDetailAndKanjieInfo(goodsId) {
     const that = this;
     const goodsDetailRes = await WXAPI.goodsDetail(goodsId)
     const goodsKanjiaSetRes = await WXAPI.kanjiaSet(goodsId)
+
     if (goodsDetailRes.code == 0) {
       if (goodsDetailRes.data.properties) {
         that.setData({

@@ -1,7 +1,7 @@
 <view class="page">
   <view class="page__bd">
     <view class='goods-name'>{{goodsDetail.basicInfo.name}}</view>    
-    <image wx:for="{{goodsDetail.pics}}" src="{{item.pic}}" class="goods-image" mode="widthFix" lazy-load="true" />
+    <image wx:for="{{goodsDetail.pics}}" wx:key="id" src="{{item.pic}}" class="goods-image" mode="widthFix" lazy-load="true" />
     <view class='goods-price'>¥ {{selectSizePrice}}</view>
     <view wx:if="{{goodsDetail.properties && goodsDetail.properties.length > 0}}" class="size-label-box">
       <block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">
