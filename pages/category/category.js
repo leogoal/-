@@ -21,8 +21,8 @@ Page({
   onLoad: function(options) {
     this.initData();
   },
-  initData() {
 
+  initData() {
     let that = this;
     wx.showNavigationBarLoading();
     WXAPI.goodsCategory().then(function(res) {
@@ -49,7 +49,7 @@ Page({
         categories: categories,
 
       });
-      console.log(categories);
+
       that.getGoodsList(0);
     }).catch((e) => {
 
@@ -98,8 +98,6 @@ Page({
       that.setData({
         goodsWrap: goodsWrap,
       });
-
-      console.log(goodsWrap);
 
       wx.hideNavigationBarLoading();
     }).catch((e) => {
