@@ -57,6 +57,7 @@ Page({
     });
 
   },
+
   getGoodsList: function(categoryId, append) {
 
     let that = this;
@@ -105,11 +106,13 @@ Page({
       wx.hideNavigationBarLoading();
     });
   },
+
   toDetailsTap: function(e) {
     wx.navigateTo({
       url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
     })
   },
+
   onCategoryClick: function(e) {
 
     let id = e.currentTarget.dataset.id;
@@ -120,6 +123,7 @@ Page({
     })
 
   },
+  
   scroll: function(e) {
 
     if (this.categoryClick){
