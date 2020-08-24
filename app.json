@@ -16,8 +16,7 @@
     "pages/asset/index",
     "pages/score/index",
     "pages/sign/index",
-    "pages/maidan/index",
-    "pages/coupons/index"
+    "pages/maidan/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
