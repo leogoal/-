@@ -8,12 +8,10 @@
     "pages/to-pay-order/index",
     "pages/wuliu/index",
     "pages/my/index",
-    "pages/recharge/index",
-    "pages/withdraw/index",
+   
     "pages/authorize/index",
-    "pages/score-excharge/index",
-    "pages/asset/index",
-    "pages/score/index",
+   
+   
     "pages/sign/index"
   ],
   "window": {
