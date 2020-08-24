@@ -15,8 +15,7 @@
     "pages/score-excharge/index",
     "pages/asset/index",
     "pages/score/index",
-    "pages/sign/index",
-    "pages/maidan/index"
+    "pages/sign/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
